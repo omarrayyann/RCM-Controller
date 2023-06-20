@@ -21,7 +21,7 @@ cd /path/to/ros_workspace
 catkin_make
 ```
 
-Basic Usage
+Basic Usage 
 --------------
 
 1. Make sure your Linux/ROS laptop is connected on the KONI Ethernet port and has IP `192.170.10.1` mask `255.255.255.0`.
