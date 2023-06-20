@@ -6,7 +6,7 @@ Requirements
 
 iiwa_ros requires several packages to be installed in order to work properly:
 
-* [ROS] - tested in **Melodic** and **Kinetic**; *Indigo* should work also
+* [ROS] - tested in **Noetic**
 * [iiwa_ros] - ROS Meta-package for controlling KUKA IIWA with a modified FRI Library
 
 
@@ -53,8 +53,6 @@ Authors/Maintainers
 - Vinicius Goncalves (vmg6973@nyu.edu)
 - Nikolaos Evangeliou (nikolaos.evangeliou@nyu.edu)
 
-
-```
 
 [ROS]: http://www.ros.org
 [iiwa_ros]: https://github.com/epfl-lasa/iiwa_ros/tree/master
