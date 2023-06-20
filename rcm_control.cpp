@@ -25,7 +25,7 @@
 
 using namespace std;
 
-// Start of Global variables
+// Global variables
 VectorXd g_qkuka = VectorXd::Zero(7);
 bool g_readedJoints = false;
 int g_count = 0;
@@ -51,9 +51,8 @@ bool PARAM_ISSIM = false;
 double PARAM_TIME = 0.01;
 double FILTER_PARAM = 0.01;
 double VELCONVERT = 1;
-// End of Global variables
 
-// Start of Prototypes
+// Prototypes
 struct Data;
 class TimeSeries;
 struct TwoTimeSeries;
@@ -67,7 +66,7 @@ VectorXd rcmControl(VectorXd qt, Vector3d pd, Vector3d pf);
 TwoTimeSeries generatePath(VectorXd p0, double t0, double maxtime);
 // End of Prototypes
 
-// Kuka Joints Publisher
+// Joints Publisher
 bool setConfig(VectorXd q)
 {
   if (g_manip.fk(q).htmTool(2, 3) < 0.45 - 0.5 - 1000)
@@ -117,7 +116,7 @@ bool setConfig(VectorXd q)
   }
 }
 
-// KUKA Joints Subscriber
+// Joints Subscriber
 void jointsCall(const sensor_msgs::JointState msg)
 {
   if (!PARAM_ISSIM)
