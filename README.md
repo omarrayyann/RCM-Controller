@@ -1,4 +1,4 @@
-# Supporting Files: RCM-constrained over-actuated manipulator tracking using differential kinematics control
+# Supporting Files for Paper: RCM-constrained over-actuated manipulator tracking using differential kinematics control
 
 
 Requirements
