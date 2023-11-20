@@ -116,7 +116,7 @@ bool setConfig(VectorXd q)
   }
 }
 
-// Joints Subscriber
+// ROS Joints Subscriber
 void jointsCall(const sensor_msgs::JointState msg)
 {
   if (!PARAM_ISSIM)
@@ -129,7 +129,7 @@ void jointsCall(const sensor_msgs::JointState msg)
   g_readedJoints = true;
 }
 
-// Control
+// Computing the next qdot "Fake Velocity Control"
 VectorXd rcmControl(VectorXd qt, Vector3d pd, Vector3d pf)
 {
   double K = 14.0;
@@ -138,21 +138,29 @@ VectorXd rcmControl(VectorXd qt, Vector3d pd, Vector3d pf)
   double dt = PARAM_DT;
   VectorXd qdot;
 
+  // "Fake" Velocity Control
   for (int n = 0; n < round(PARAM_DT / dt); n++)
   {
+
     FulcrumPointResult fpResult = g_manip.computeFulcrumPoint(pf, q);
-
-    MatrixXd A1 = Utils::matrixVertStack(fpResult.jacfx, fpResult.jacfy);
-    VectorXd b1 = Utils::vectorVertStack(-K * (fpResult.fx), -K * (fpResult.fy));
-
-    MatrixXd A2 = fpResult.fkr.jacTool.block<3, 7>(0, 0);
     Vector3d pe = fpResult.fkr.htmTool.block<3, 1>(0, 3);
-    VectorXd b2 = -(27.0) * (pe - pd); // 27
+
+    // J_f (x and y component of the RCM Task Function Jacobian)
+    MatrixXd A1 = Utils::matrixVertStack(fpResult.jacfx, fpResult.jacfy);
+
+    // J_v (velocity componenet of the jacobian)
+    MatrixXd A2 = fpResult.fkr.jacTool.block<3, 7>(0, 0);
+
+    // -Kf * rF (RCM Task Function)
+    VectorXd b1 = Utils::vectorVertStack(-K * (fpResult.fx), -K * (fpResult.fy));
+    // -Kt * rT (Tool-Tip Task Function)
+    VectorXd b2 = -(27.0) * (pe - pd);
 
     vector<MatrixXd> A = {A2, A1};
     vector<VectorXd> b = {b2, b1};
 
-    qdot = Utils::hierarchicalSolve(A, b, 0.0000001); // 0.0005 0.0001
+    qdot = Utils::hierarchicalSolve(A, b, 0.0000001);
+
     q += qdot * dt;
   }
 

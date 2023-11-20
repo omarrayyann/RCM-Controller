@@ -151,7 +151,7 @@ Vector3d Utils::rpy(Matrix4d rot)
   }
 }
 
-double Utils::distanceAABB(GeometricPrimitives* objA, GeometricPrimitives* objB)
+double Utils::distanceAABB(GeometricPrimitives *objA, GeometricPrimitives *objB)
 {
   AxisAlignedBoundingBox AABB_A = (*objA).getAABB();
   AxisAlignedBoundingBox AABB_B = (*objB).getAABB();
@@ -212,7 +212,8 @@ VectorFieldResult Utils::vectorField(VectorXd q, vector<VectorXd> points, double
       dmin = dminTemp;
       ind = i;
     }
-    if (i > 0) s.push_back(s[s.size() - 1] + (points[i] - points[i - 1]).norm());
+    if (i > 0)
+      s.push_back(s[s.size() - 1] + (points[i] - points[i - 1]).norm());
   }
 
   VectorXd pi = points[ind];
@@ -252,7 +253,8 @@ VectorFieldResult Utils::vectorField(VectorXd q, vector<VectorXd> points, double
   if (openCurve)
   {
     mult = sqrt(abs((1 - (sCurrent - percentLengthStop * sMaximum) / ((1 - percentLengthStop) * sMaximum))));
-    if (sCurrent > percentLengthStop * sMaximum) v = mult * v;
+    if (sCurrent > percentLengthStop * sMaximum)
+      v = mult * v;
   }
 
   // if(openCurve)
@@ -297,24 +299,30 @@ VectorXd Utils::solveQP(MatrixXd H, VectorXd f, MatrixXd A, VectorXd b, MatrixXd
 
   H_aux.resize(n, n);
   for (int i = 0; i < n; i++)
-    for (int j = 0; j < n; j++) H_aux[i][j] = H(i, j);
+    for (int j = 0; j < n; j++)
+      H_aux[i][j] = H(i, j);
 
   f_aux.resize(n);
-  for (int i = 0; i < n; i++) f_aux[i] = f[i];
+  for (int i = 0; i < n; i++)
+    f_aux[i] = f[i];
 
   Aeq_aux.resize(n, meq);
   for (int i = 0; i < n; i++)
-    for (int j = 0; j < meq; j++) Aeq_aux[i][j] = Aeq(j, i);
+    for (int j = 0; j < meq; j++)
+      Aeq_aux[i][j] = Aeq(j, i);
 
   beq_aux.resize(meq);
-  for (int j = 0; j < meq; j++) beq_aux[j] = -beq[j];
+  for (int j = 0; j < meq; j++)
+    beq_aux[j] = -beq[j];
 
   A_aux.resize(n, mineq);
   for (int i = 0; i < n; i++)
-    for (int j = 0; j < mineq; j++) A_aux[i][j] = A(j, i);
+    for (int j = 0; j < mineq; j++)
+      A_aux[i][j] = A(j, i);
 
   b_aux.resize(mineq);
-  for (int j = 0; j < mineq; j++) b_aux[j] = -b[j];
+  for (int j = 0; j < mineq; j++)
+    b_aux[j] = -b[j];
 
   u_aux.resize(n);
 
@@ -331,7 +339,8 @@ VectorXd Utils::solveQP(MatrixXd H, VectorXd f, MatrixXd A, VectorXd b, MatrixXd
     // Problem is feasible
     VectorXd u(n);
 
-    for (int i = 0; i < n; i++) u[i] = u_aux[i];
+    for (int i = 0; i < n; i++)
+      u[i] = u_aux[i];
 
     return u;
   }
@@ -384,7 +393,8 @@ string Utils::printNumber(double x, int nochar)
   else
     str = std::to_string(y).substr(0, nochar - 1);
 
-  while (str.size() < nochar) str += "0";
+  while (str.size() < nochar)
+    str += "0";
 
   return str;
 }
@@ -392,7 +402,8 @@ string Utils::printNumber(double x, int nochar)
 string Utils::printVector(VectorXd v)
 {
   string str = "[";
-  for (int i = 0; i < v.rows() - 1; i++) str += printNumber(v[i]) + ", ";
+  for (int i = 0; i < v.rows() - 1; i++)
+    str += printNumber(v[i]) + ", ";
 
   str += printNumber(v[v.rows() - 1]) + "]";
 
@@ -402,7 +413,8 @@ string Utils::printVector(VectorXd v)
 string Utils::printVectorOctave(VectorXd v)
 {
   string str = "[";
-  for (int i = 0; i < v.rows() - 1; i++) str += printNumber(v[i]) + " ";
+  for (int i = 0; i < v.rows() - 1; i++)
+    str += printNumber(v[i]) + " ";
 
   str += printNumber(v[v.rows() - 1]) + "]";
 
@@ -416,7 +428,8 @@ string Utils::printMatrix(MatrixXd M)
   for (int i = 0; i < M.rows(); i++)
   {
     str += (i == 0) ? "[" : " ";
-    for (int j = 0; j < M.cols(); j++) str += Utils::printNumber(M(i, j)) + "  ";
+    for (int j = 0; j < M.cols(); j++)
+      str += Utils::printNumber(M(i, j)) + "  ";
 
     str += (i == M.rows() - 1) ? "]" : "\n";
   }
@@ -431,7 +444,8 @@ string Utils::printMatrixPython(MatrixXd M)
   for (int i = 0; i < M.rows(); i++)
   {
     str += "[";
-    for (int j = 0; j < M.cols(); j++) str += Utils::printNumber(M(i, j)) + ((j == M.cols() - 1) ? " " : ", ");
+    for (int j = 0; j < M.cols(); j++)
+      str += Utils::printNumber(M(i, j)) + ((j == M.cols() - 1) ? " " : ", ");
 
     str += (i == M.rows() - 1) ? "]" : "], ";
   }
@@ -444,7 +458,8 @@ double Utils::softMin(vector<double> v, double h)
   double valMin = 100000;
   double sum = 0;
 
-  for (int i = 0; i < v.size(); i++) valMin = min(valMin, v[i]);
+  for (int i = 0; i < v.size(); i++)
+    valMin = min(valMin, v[i]);
 
   for (int i = 0; i < v.size(); i++)
   {
@@ -493,7 +508,8 @@ SoftSelectMinResult Utils::softSelectMin(vector<double> v, vector<VectorXd> vVec
   double tempVal;
   VectorXd sumv = VectorXd::Zero(vVec[0].rows());
 
-  for (int i = 0; i < v.size(); i++) valMin = min(valMin, v[i]);
+  for (int i = 0; i < v.size(); i++)
+    valMin = min(valMin, v[i]);
 
   for (int i = 0; i < v.size(); i++)
   {

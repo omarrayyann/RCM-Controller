@@ -102,7 +102,7 @@ DistanceLinkObjResult DistanceRobotObjResult::getClosest()
   return ds;
 }
 
-DistanceLinkObjResult* DistanceRobotObjResult::getItem(int indLink, int indColObjLink)
+DistanceLinkObjResult *DistanceRobotObjResult::getItem(int indLink, int indColObjLink)
 {
   for (int i = 0; i < this->noElements; i++)
   {
@@ -182,7 +182,7 @@ DistanceLinkLinkResult DistanceRobotAutoResult::getClosest()
   return ds;
 }
 
-DistanceLinkLinkResult* DistanceRobotAutoResult::getItem(int indLink1, int indColObjLink1, int indLink2,
+DistanceLinkLinkResult *DistanceRobotAutoResult::getItem(int indLink1, int indColObjLink1, int indLink2,
                                                          int indColObjLink2)
 {
   for (int i = 0; i < this->noElements; i++)
@@ -301,30 +301,30 @@ Manipulator Manipulator::createKukaKR5()
   FKResult fkres0 = manip.fk();
 
   // For the first link
-  Cylinder* kr5C0_0 =
+  Cylinder *kr5C0_0 =
       new Cylinder(Utils::trn(-0.075, 0.170, 0) * Utils::roty(M_PI / 2) * Utils::rotx(M_PI / 2), 0.12, 0.33);
   manip.links[0].colObjs.push_back(kr5C0_0);
   // manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*kr5C0_0).htm);
   manip.links[0].htmCols.push_back((*kr5C0_0).htm);
 
-  Cylinder* kr5C0_1 = new Cylinder(Utils::trn(0, 0, 0.030) * Utils::rotz(M_PI / 2) * Utils::rotx(M_PI), 0.095, 0.30);
+  Cylinder *kr5C0_1 = new Cylinder(Utils::trn(0, 0, 0.030) * Utils::rotz(M_PI / 2) * Utils::rotx(M_PI), 0.095, 0.30);
   manip.links[0].colObjs.push_back(kr5C0_1);
   // manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*kr5C0_1).htm);
   manip.links[0].htmCols.push_back((*kr5C0_1).htm);
 
   // For the second link
-  Box* kr5C1_0 = new Box(Utils::trn(-0.200, 0.020, 0.12) * Utils::roty(M_PI / 2), 0.1, 0.16, 0.5);
+  Box *kr5C1_0 = new Box(Utils::trn(-0.200, 0.020, 0.12) * Utils::roty(M_PI / 2), 0.1, 0.16, 0.5);
   manip.links[1].colObjs.push_back(kr5C1_0);
   // manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*kr5C1_0).htm);
   manip.links[1].htmCols.push_back((*kr5C1_0).htm);
 
-  Cylinder* kr5C1_1 = new Cylinder(Utils::trn(0, 0, 0.040) * Utils::rotz(M_PI) * Utils::rotx(M_PI), 0.095, 0.28);
+  Cylinder *kr5C1_1 = new Cylinder(Utils::trn(0, 0, 0.040) * Utils::rotz(M_PI) * Utils::rotx(M_PI), 0.095, 0.28);
   manip.links[1].colObjs.push_back(kr5C1_1);
   // manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*kr5C1_1).htm);
   manip.links[1].htmCols.push_back((*kr5C1_1).htm);
 
   // For the third link
-  Box* kr5C2_0 = new Box(Utils::trn(0, 0, -0.224) * Utils::rotz(-M_PI / 2) * Utils::rotx(-M_PI / 2), 0.143, 0.45, 0.12);
+  Box *kr5C2_0 = new Box(Utils::trn(0, 0, -0.224) * Utils::rotz(-M_PI / 2) * Utils::rotx(-M_PI / 2), 0.143, 0.45, 0.12);
   manip.links[2].colObjs.push_back(kr5C2_0);
   // manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*kr5C2_0).htm);
   manip.links[2].htmCols.push_back((*kr5C2_0).htm);
@@ -382,7 +382,7 @@ Manipulator Manipulator::createKukaIIWA()
   double d_bs = 0.360;
   double d_se = 0.420;
   double d_ew = 0.400;
-  double d_wf = 0.152 + d_tool;  // 0.609
+  double d_wf = 0.152 + d_tool; // 0.609
 
   vector<Link> linksKuka;
 
@@ -410,62 +410,62 @@ Manipulator Manipulator::createKukaIIWA()
   double dz = -0.02;
 
   // For the first link
-  Cylinder* iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
+  Cylinder *iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
   manip.links[0].colObjs.push_back(iiwaC0_0);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_0).htm);
   manip.links[0].nameObjs.push_back("c0_0");
 
-  Sphere* iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.12);
+  Sphere *iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.12);
   manip.links[0].colObjs.push_back(iiwaC0_1);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_1).htm);
   manip.links[0].nameObjs.push_back("c0_1");
 
   // For the second link
-  Sphere* iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.1);
+  Sphere *iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.1);
   manip.links[1].colObjs.push_back(iiwaC1_0);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_0).htm);
   manip.links[1].nameObjs.push_back("c1_0");
 
-  Cylinder* iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.075, 0.125);
+  Cylinder *iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.075, 0.125);
   manip.links[1].colObjs.push_back(iiwaC1_1);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_1).htm);
   manip.links[1].nameObjs.push_back("c1_1");
 
   // For the third link
-  Cylinder* iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
+  Cylinder *iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
   manip.links[2].colObjs.push_back(iiwaC2_0);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_0).htm);
   manip.links[2].nameObjs.push_back("c2_0");
 
-  Sphere* iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
+  Sphere *iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
   manip.links[2].colObjs.push_back(iiwaC2_1);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_1).htm);
   manip.links[2].nameObjs.push_back("c2_1");
 
   // For the fourth link
-  Sphere* iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.08);
+  Sphere *iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.08);
   manip.links[3].colObjs.push_back(iiwaC3_0);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_0).htm);
   manip.links[3].nameObjs.push_back("c3_0");
 
-  Cylinder* iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
+  Cylinder *iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
   manip.links[3].colObjs.push_back(iiwaC3_1);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_1).htm);
   manip.links[3].nameObjs.push_back("c3_1");
 
   // For the fifth link
-  Cylinder* iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
+  Cylinder *iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
   manip.links[4].colObjs.push_back(iiwaC4_0);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_0).htm);
   manip.links[4].nameObjs.push_back("c4_0");
 
-  Box* iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
+  Box *iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
   manip.links[4].colObjs.push_back(iiwaC4_1);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_1).htm);
   manip.links[4].nameObjs.push_back("c4_1");
 
   // For the sixth link
-  Cylinder* iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
+  Cylinder *iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
   manip.links[5].colObjs.push_back(iiwaC5_0);
   manip.links[5].htmCols.push_back(fkres0.htmDH[5].inverse() * (*iiwaC5_0).htm);
   manip.links[5].nameObjs.push_back("c5_0");
@@ -505,7 +505,7 @@ Manipulator Manipulator::createKukaIIWASurgery()
   double d_bs = 0.360;
   double d_se = 0.420;
   double d_ew = 0.400;
-  double d_wf = 0.156 + d_tool;  // 0.609
+  double d_wf = 0.156 + d_tool; // 0.609
 
   vector<Link> linksKuka;
 
@@ -533,62 +533,62 @@ Manipulator Manipulator::createKukaIIWASurgery()
   double dz = -0.02;
 
   // For the first link
-  Cylinder* iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
+  Cylinder *iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
   manip.links[0].colObjs.push_back(iiwaC0_0);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_0).htm);
   manip.links[0].nameObjs.push_back("c0_0");
 
-  Sphere* iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.12);
+  Sphere *iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.12);
   manip.links[0].colObjs.push_back(iiwaC0_1);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_1).htm);
   manip.links[0].nameObjs.push_back("c0_1");
 
   // For the second link
-  Sphere* iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.1);
+  Sphere *iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.1);
   manip.links[1].colObjs.push_back(iiwaC1_0);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_0).htm);
   manip.links[1].nameObjs.push_back("c1_0");
 
-  Cylinder* iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.075, 0.125);
+  Cylinder *iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.075, 0.125);
   manip.links[1].colObjs.push_back(iiwaC1_1);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_1).htm);
   manip.links[1].nameObjs.push_back("c1_1");
 
   // For the third link
-  Cylinder* iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
+  Cylinder *iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
   manip.links[2].colObjs.push_back(iiwaC2_0);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_0).htm);
   manip.links[2].nameObjs.push_back("c2_0");
 
-  Sphere* iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
+  Sphere *iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
   manip.links[2].colObjs.push_back(iiwaC2_1);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_1).htm);
   manip.links[2].nameObjs.push_back("c2_1");
 
   // For the fourth link
-  Sphere* iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.08);
+  Sphere *iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.08);
   manip.links[3].colObjs.push_back(iiwaC3_0);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_0).htm);
   manip.links[3].nameObjs.push_back("c3_0");
 
-  Cylinder* iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
+  Cylinder *iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
   manip.links[3].colObjs.push_back(iiwaC3_1);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_1).htm);
   manip.links[3].nameObjs.push_back("c3_1");
 
   // For the fifth link
-  Cylinder* iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
+  Cylinder *iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
   manip.links[4].colObjs.push_back(iiwaC4_0);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_0).htm);
   manip.links[4].nameObjs.push_back("c4_0");
 
-  Box* iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
+  Box *iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
   manip.links[4].colObjs.push_back(iiwaC4_1);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_1).htm);
   manip.links[4].nameObjs.push_back("c4_1");
 
   // For the sixth link
-  Cylinder* iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
+  Cylinder *iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
   manip.links[5].colObjs.push_back(iiwaC5_0);
   manip.links[5].htmCols.push_back(fkres0.htmDH[5].inverse() * (*iiwaC5_0).htm);
   manip.links[5].nameObjs.push_back("c5_0");
@@ -657,62 +657,62 @@ Manipulator Manipulator::createKukaIIWAWithTool()
   double dz = -0.02;
 
   // For the first link
-  Cylinder* iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
+  Cylinder *iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
   manip.links[0].colObjs.push_back(iiwaC0_0);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_0).htm);
   manip.links[0].nameObjs.push_back("c0_0");
 
-  Sphere* iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.125);
+  Sphere *iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.125);
   manip.links[0].colObjs.push_back(iiwaC0_1);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_1).htm);
   manip.links[0].nameObjs.push_back("c0_1");
 
   // For the second link
-  Sphere* iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.11);
+  Sphere *iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.11);
   manip.links[1].colObjs.push_back(iiwaC1_0);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_0).htm);
   manip.links[1].nameObjs.push_back("c1_0");
 
-  Cylinder* iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.08, 0.125);
+  Cylinder *iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.08, 0.125);
   manip.links[1].colObjs.push_back(iiwaC1_1);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_1).htm);
   manip.links[1].nameObjs.push_back("c1_1");
 
   // For the third link
-  Cylinder* iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
+  Cylinder *iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
   manip.links[2].colObjs.push_back(iiwaC2_0);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_0).htm);
   manip.links[2].nameObjs.push_back("c2_0");
 
-  Sphere* iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
+  Sphere *iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
   manip.links[2].colObjs.push_back(iiwaC2_1);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_1).htm);
   manip.links[2].nameObjs.push_back("c2_1");
 
   // For the fourth link
-  Sphere* iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.09);
+  Sphere *iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.09);
   manip.links[3].colObjs.push_back(iiwaC3_0);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_0).htm);
   manip.links[3].nameObjs.push_back("c3_0");
 
-  Cylinder* iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
+  Cylinder *iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
   manip.links[3].colObjs.push_back(iiwaC3_1);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_1).htm);
   manip.links[3].nameObjs.push_back("c3_1");
 
   // For the fifth link
-  Cylinder* iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
+  Cylinder *iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
   manip.links[4].colObjs.push_back(iiwaC4_0);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_0).htm);
   manip.links[4].nameObjs.push_back("c4_0");
 
-  Box* iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
+  Box *iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
   manip.links[4].colObjs.push_back(iiwaC4_1);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_1).htm);
   manip.links[4].nameObjs.push_back("c4_1");
 
   // For the sixth link
-  Cylinder* iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
+  Cylinder *iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
   manip.links[5].colObjs.push_back(iiwaC5_0);
   manip.links[5].htmCols.push_back(fkres0.htmDH[5].inverse() * (*iiwaC5_0).htm);
   manip.links[5].nameObjs.push_back("c5_0");
@@ -815,8 +815,11 @@ FulcrumPointResult Manipulator::computeFulcrumPoint(Vector3d pf, VectorXd q)
   fulcrumPointResult.df =
       sqrt(fulcrumPointResult.fx * fulcrumPointResult.fx + fulcrumPointResult.fy * fulcrumPointResult.fy);
 
+  // x component of the RCM Task Function Jacobian
   fulcrumPointResult.jacfx = xe.transpose() * Jv - (pe - pf).transpose() * Utils::S(xe) * Jw;
+  // y component of the RCM Task Function Jacobian
   fulcrumPointResult.jacfy = ye.transpose() * Jv - (pe - pf).transpose() * Utils::S(ye) * Jw;
+
   fulcrumPointResult.fkr = fkr;
   return fulcrumPointResult;
 }
@@ -965,9 +968,9 @@ VectorXd Manipulator::ik(Matrix4d desHtm, VectorXd q0, double pTol, double aTol,
   return q;
 }
 
-DistanceRobotObjResult Manipulator::computeDistToObj(GeometricPrimitives* obj, VectorXd q,
+DistanceRobotObjResult Manipulator::computeDistToObj(GeometricPrimitives *obj, VectorXd q,
                                                      Matrix4d customHtmWorldToBase,
-                                                     DistanceRobotObjResult* oldDistStruct, double tol, double h,
+                                                     DistanceRobotObjResult *oldDistStruct, double tol, double h,
                                                      double maxDist)
 {
   DistanceRobotObjResult drs(this->noJoints);
@@ -975,14 +978,14 @@ DistanceRobotObjResult Manipulator::computeDistToObj(GeometricPrimitives* obj, V
   FKResult fkres = this->jacGeo(q, customHtmWorldToBase);
 
   // Prepare the list of objects with the appropriate pose
-  vector<vector<GeometricPrimitives*>> listObjsCopy;
+  vector<vector<GeometricPrimitives *>> listObjsCopy;
 
   for (int i = 0; i < this->noJoints; i++)
   {
-    vector<GeometricPrimitives*> tempList;
+    vector<GeometricPrimitives *> tempList;
     for (int j = 0; j < this->links[i].colObjs.size(); j++)
     {
-      GeometricPrimitives* colObjCopied = (*this->links[i].colObjs[j]).copy();
+      GeometricPrimitives *colObjCopied = (*this->links[i].colObjs[j]).copy();
       (*colObjCopied).htm = fkres.htmDH[i] * this->links[i].htmCols[j];
       tempList.push_back(colObjCopied);
     }
@@ -991,7 +994,7 @@ DistanceRobotObjResult Manipulator::computeDistToObj(GeometricPrimitives* obj, V
 
   // Compute all the distances
   Vector3d pointObj;
-  DistanceLinkObjResult* dlo;
+  DistanceLinkObjResult *dlo;
 
   for (int i = 0; i < this->noJoints; i++)
   {
@@ -1037,7 +1040,7 @@ DistanceRobotObjResult Manipulator::computeDistToObj(GeometricPrimitives* obj, V
 }
 
 DistanceRobotAutoResult Manipulator::computeDistAuto(VectorXd q, Matrix4d customHtmWorldToBase,
-                                                     DistanceRobotAutoResult* oldDistStruct, double tol, double h,
+                                                     DistanceRobotAutoResult *oldDistStruct, double tol, double h,
                                                      double maxDist)
 {
   DistanceRobotAutoResult drs(this->noJoints);
@@ -1045,14 +1048,14 @@ DistanceRobotAutoResult Manipulator::computeDistAuto(VectorXd q, Matrix4d custom
   FKResult fkres = this->jacGeo(q, customHtmWorldToBase);
 
   // Prepare the list of objects with the appropriate pose
-  vector<vector<GeometricPrimitives*>> listObjsCopy;
+  vector<vector<GeometricPrimitives *>> listObjsCopy;
 
   for (int i = 0; i < this->noJoints; i++)
   {
-    vector<GeometricPrimitives*> tempList;
+    vector<GeometricPrimitives *> tempList;
     for (int j = 0; j < this->links[i].colObjs.size(); j++)
     {
-      GeometricPrimitives* colObjCopied = (*this->links[i].colObjs[j]).copy();
+      GeometricPrimitives *colObjCopied = (*this->links[i].colObjs[j]).copy();
       (*colObjCopied).htm = fkres.htmDH[i] * this->links[i].htmCols[j];
       tempList.push_back(colObjCopied);
     }
@@ -1075,7 +1078,7 @@ DistanceRobotAutoResult Manipulator::computeDistAuto(VectorXd q, Matrix4d custom
 
   // Compute all the distances
   Vector3d pointColObj1;
-  DistanceLinkLinkResult* dll;
+  DistanceLinkLinkResult *dll;
   int ind1, ind2, indCol1, indCol2;
 
   for (int k = 0; k < indLink1.size(); k++)
@@ -1157,7 +1160,8 @@ ConstControlResult Manipulator::velocityConstControl(VectorXd q, VelocityConstCo
     A = Utils::matrixVertStack(A, dlo.getAllJacobians());
 
     btemp = dlo.getDistances();
-    for (int j = 0; j < btemp.rows(); j++) btemp[j] = -param.etaObs * (btemp[j] - param.distSafeObs);
+    for (int j = 0; j < btemp.rows(); j++)
+      btemp[j] = -param.etaObs * (btemp[j] - param.distSafeObs);
 
     b = Utils::vectorVertStack(b, btemp);
   }
@@ -1174,7 +1178,8 @@ ConstControlResult Manipulator::velocityConstControl(VectorXd q, VelocityConstCo
     A = Utils::matrixVertStack(A, dra.getAllJacobians());
 
     btemp = dra.getDistances();
-    for (int j = 0; j < btemp.rows(); j++) btemp[j] = -param.etaAuto * (btemp[j] - param.distSafeAuto);
+    for (int j = 0; j < btemp.rows(); j++)
+      btemp[j] = -param.etaAuto * (btemp[j] - param.distSafeAuto);
 
     b = Utils::vectorVertStack(b, btemp);
   }
@@ -1210,7 +1215,8 @@ ConstControlResult Manipulator::velocityConstControl(VectorXd q, VelocityConstCo
 
     btemp = VectorXd::Zero(this->noJoints);
 
-    for (int i = 0; i < this->noJoints; i++) btemp[i] = this->qDotMin[i];
+    for (int i = 0; i < this->noJoints; i++)
+      btemp[i] = this->qDotMin[i];
 
     b = Utils::vectorVertStack(b, btemp);
 
@@ -1218,7 +1224,8 @@ ConstControlResult Manipulator::velocityConstControl(VectorXd q, VelocityConstCo
 
     btemp = VectorXd::Zero(this->noJoints);
 
-    for (int i = 0; i < this->noJoints; i++) btemp[i] = -this->qDotMax[i];
+    for (int i = 0; i < this->noJoints; i++)
+      btemp[i] = -this->qDotMax[i];
 
     b = Utils::vectorVertStack(b, btemp);
   }
@@ -1284,7 +1291,7 @@ ConstControlResult Manipulator::accelerationConstControl(VectorXd qdot, VectorXd
     {
       // Try to find the respective element in dloNext.
 
-      DistanceLinkObjResult* dlorNext = dloNext.getItem(dlo[j].linkNumber, dlo[j].colObjLinkNumber);
+      DistanceLinkObjResult *dlorNext = dloNext.getItem(dlo[j].linkNumber, dlo[j].colObjLinkNumber);
       if (dlorNext != NULL)
       {
         double dist = dlo[j].distance - param.distSafeObs;
@@ -1318,7 +1325,7 @@ ConstControlResult Manipulator::accelerationConstControl(VectorXd qdot, VectorXd
     {
       // Try to find the respective element in draNext.
 
-      DistanceLinkLinkResult* dllrNext =
+      DistanceLinkLinkResult *dllrNext =
           draNext.getItem(dra[j].linkNumber1, dra[j].colObjLinkNumber1, dra[j].linkNumber2, dra[j].colObjLinkNumber2);
       if (dllrNext != NULL)
       {
@@ -1370,7 +1377,8 @@ ConstControlResult Manipulator::accelerationConstControl(VectorXd qdot, VectorXd
 
     btemp = VectorXd::Zero(this->noJoints);
 
-    for (int i = 0; i < this->noJoints; i++) btemp[i] = -K * (qdot[i] - this->qDotMin[i]);
+    for (int i = 0; i < this->noJoints; i++)
+      btemp[i] = -K * (qdot[i] - this->qDotMin[i]);
 
     b = Utils::vectorVertStack(b, btemp);
 
@@ -1378,7 +1386,8 @@ ConstControlResult Manipulator::accelerationConstControl(VectorXd qdot, VectorXd
 
     btemp = VectorXd::Zero(this->noJoints);
 
-    for (int i = 0; i < this->noJoints; i++) btemp[i] = -K * (this->qDotMax[i] - qdot[i]);
+    for (int i = 0; i < this->noJoints; i++)
+      btemp[i] = -K * (this->qDotMax[i] - qdot[i]);
 
     b = Utils::vectorVertStack(b, btemp);
   }
@@ -1460,17 +1469,17 @@ FreeConfigResult Manipulator::checkFreeConfig(VectorXd q, FreeConfigParam param)
   }
 
   // Prepare for collision or auto collision detection
-  vector<vector<GeometricPrimitives*>> listObjsCopy;
+  vector<vector<GeometricPrimitives *>> listObjsCopy;
   if (fcr.isFree && (param.considerAutoCollision || param.obstacles.size() > 0))
   {
     FKResult fkres = this->jacGeo(q, param.customHtmWorldToBase);
 
     for (i = 0; i < this->noJoints; i++)
     {
-      vector<GeometricPrimitives*> tempList;
+      vector<GeometricPrimitives *> tempList;
       for (j = 0; j < this->links[i].colObjs.size(); j++)
       {
-        GeometricPrimitives* colObjCopied = (*this->links[i].colObjs[j]).copy();
+        GeometricPrimitives *colObjCopied = (*this->links[i].colObjs[j]).copy();
         (*colObjCopied).htm = fkres.htmDH[i] * this->links[i].htmCols[j];
         tempList.push_back(colObjCopied);
       }
@@ -1578,7 +1587,7 @@ Manipulator Manipulator::createKukaIIWA_old()
   double d_bs = 0.360;
   double d_se = 0.420;
   double d_ew = 0.400;
-  double d_wf = 0.152 + 0.4;  // 0.609
+  double d_wf = 0.152 + 0.4; // 0.609
 
   vector<Link> linksKuka;
 
@@ -1606,62 +1615,62 @@ Manipulator Manipulator::createKukaIIWA_old()
   double dz = -0.02;
 
   // For the first link
-  Cylinder* iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
+  Cylinder *iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
   manip.links[0].colObjs.push_back(iiwaC0_0);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_0).htm);
   manip.links[0].nameObjs.push_back("c0_0");
 
-  Sphere* iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.12);
+  Sphere *iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.12);
   manip.links[0].colObjs.push_back(iiwaC0_1);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_1).htm);
   manip.links[0].nameObjs.push_back("c0_1");
 
   // For the second link
-  Sphere* iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.1);
+  Sphere *iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.1);
   manip.links[1].colObjs.push_back(iiwaC1_0);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_0).htm);
   manip.links[1].nameObjs.push_back("c1_0");
 
-  Cylinder* iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.075, 0.125);
+  Cylinder *iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.075, 0.125);
   manip.links[1].colObjs.push_back(iiwaC1_1);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_1).htm);
   manip.links[1].nameObjs.push_back("c1_1");
 
   // For the third link
-  Cylinder* iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
+  Cylinder *iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
   manip.links[2].colObjs.push_back(iiwaC2_0);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_0).htm);
   manip.links[2].nameObjs.push_back("c2_0");
 
-  Sphere* iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
+  Sphere *iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
   manip.links[2].colObjs.push_back(iiwaC2_1);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_1).htm);
   manip.links[2].nameObjs.push_back("c2_1");
 
   // For the fourth link
-  Sphere* iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.08);
+  Sphere *iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.08);
   manip.links[3].colObjs.push_back(iiwaC3_0);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_0).htm);
   manip.links[3].nameObjs.push_back("c3_0");
 
-  Cylinder* iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
+  Cylinder *iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
   manip.links[3].colObjs.push_back(iiwaC3_1);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_1).htm);
   manip.links[3].nameObjs.push_back("c3_1");
 
   // For the fifth link
-  Cylinder* iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
+  Cylinder *iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
   manip.links[4].colObjs.push_back(iiwaC4_0);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_0).htm);
   manip.links[4].nameObjs.push_back("c4_0");
 
-  Box* iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
+  Box *iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
   manip.links[4].colObjs.push_back(iiwaC4_1);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_1).htm);
   manip.links[4].nameObjs.push_back("c4_1");
 
   // For the sixth link
-  Cylinder* iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
+  Cylinder *iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
   manip.links[5].colObjs.push_back(iiwaC5_0);
   manip.links[5].htmCols.push_back(fkres0.htmDH[5].inverse() * (*iiwaC5_0).htm);
   manip.links[5].nameObjs.push_back("c5_0");
@@ -1728,62 +1737,62 @@ Manipulator Manipulator::createKukaIIWAWithTool_old()
   double dz = -0.02;
 
   // For the first link
-  Cylinder* iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
+  Cylinder *iiwaC0_0 = new Cylinder(Utils::trn(0, 0, 0.15 + dz), 0.1, 0.12);
   manip.links[0].colObjs.push_back(iiwaC0_0);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_0).htm);
   manip.links[0].nameObjs.push_back("c0_0");
 
-  Sphere* iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.125);
+  Sphere *iiwaC0_1 = new Sphere(Utils::trn(0.01, 0, 0.33 + dz), 0.125);
   manip.links[0].colObjs.push_back(iiwaC0_1);
   manip.links[0].htmCols.push_back(fkres0.htmDH[0].inverse() * (*iiwaC0_1).htm);
   manip.links[0].nameObjs.push_back("c0_1");
 
   // For the second link
-  Sphere* iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.11);
+  Sphere *iiwaC1_0 = new Sphere(Utils::trn(0, 0.03, 0.38 + dz), 0.11);
   manip.links[1].colObjs.push_back(iiwaC1_0);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_0).htm);
   manip.links[1].nameObjs.push_back("c1_0");
 
-  Cylinder* iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.08, 0.125);
+  Cylinder *iiwaC1_1 = new Cylinder(Utils::trn(0, 0, 0.54 + dz), 0.08, 0.125);
   manip.links[1].colObjs.push_back(iiwaC1_1);
   manip.links[1].htmCols.push_back(fkres0.htmDH[1].inverse() * (*iiwaC1_1).htm);
   manip.links[1].nameObjs.push_back("c1_1");
 
   // For the third link
-  Cylinder* iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
+  Cylinder *iiwaC2_0 = new Cylinder(Utils::trn(0, 0, 0.66 + 2 * dz), 0.08, 0.1);
   manip.links[2].colObjs.push_back(iiwaC2_0);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_0).htm);
   manip.links[2].nameObjs.push_back("c2_0");
 
-  Sphere* iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
+  Sphere *iiwaC2_1 = new Sphere(Utils::trn(0, 0.01, 0.75 + 2 * dz), 0.11);
   manip.links[2].colObjs.push_back(iiwaC2_1);
   manip.links[2].htmCols.push_back(fkres0.htmDH[2].inverse() * (*iiwaC2_1).htm);
   manip.links[2].nameObjs.push_back("c2_1");
 
   // For the fourth link
-  Sphere* iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.09);
+  Sphere *iiwaC3_0 = new Sphere(Utils::trn(0, -0.035, 0.803 + 2 * dz), 0.09);
   manip.links[3].colObjs.push_back(iiwaC3_0);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_0).htm);
   manip.links[3].nameObjs.push_back("c3_0");
 
-  Cylinder* iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
+  Cylinder *iiwaC3_1 = new Cylinder(Utils::trn(0, 0, 0.935 + 2 * dz), 0.075, 0.125);
   manip.links[3].colObjs.push_back(iiwaC3_1);
   manip.links[3].htmCols.push_back(fkres0.htmDH[3].inverse() * (*iiwaC3_1).htm);
   manip.links[3].nameObjs.push_back("c3_1");
 
   // For the fifth link
-  Cylinder* iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
+  Cylinder *iiwaC4_0 = new Cylinder(Utils::trn(0, 0, 1.052 + 2 * dz), 0.075, 0.11);
   manip.links[4].colObjs.push_back(iiwaC4_0);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_0).htm);
   manip.links[4].nameObjs.push_back("c4_0");
 
-  Box* iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
+  Box *iiwaC4_1 = new Box(Utils::trn(0, -0.08, 1.15 + 2 * dz), 0.12, 0.04, 0.17);
   manip.links[4].colObjs.push_back(iiwaC4_1);
   manip.links[4].htmCols.push_back(fkres0.htmDH[4].inverse() * (*iiwaC4_1).htm);
   manip.links[4].nameObjs.push_back("c4_1");
 
   // For the sixth link
-  Cylinder* iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
+  Cylinder *iiwaC5_0 = new Cylinder(Utils::trn(0, 0, 1.203 + 2 * dz), 0.075, 0.24);
   manip.links[5].colObjs.push_back(iiwaC5_0);
   manip.links[5].htmCols.push_back(fkres0.htmDH[5].inverse() * (*iiwaC5_0).htm);
   manip.links[5].nameObjs.push_back("c5_0");
