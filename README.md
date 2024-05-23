@@ -34,7 +34,7 @@ Controller Usage
 3. Within 10 seconds before the timeout, launch: `roslaunch iiwa_driver iiwa_bringup.launch`. This will connect to IIWA robot using FRI.
 4 The Smartpad lets you select control mode and stiffness
 5. Check that everything works if `/iiwa/joint_states` is being published and reflects the actual robot state.
-6. The Smarpad'd [Application] tab must remain green. Otherwise you can press `Play ▶` again to reconnect.
+6. The Smartpad [Application] tab must remain green. Otherwise you can press `Play ▶` again to reconnect.
 7. Once you connect to IIWA robot using FRI, run: `rosrun your_workspace RCM_Control.launch`.
 
 Acknowledgements
