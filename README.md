@@ -37,11 +37,6 @@ Controller Usage
 6. The Smarpad'd [Application] tab must remain green. Otherwise you can press `Play ▶` again to reconnect.
 7. Once you connect to IIWA robot using FRI, run: `rosrun your_workspace RCM_Control.launch`.
 
-Documentation
----------------------
-
-**UNDER CONSTRUCTION**
-
 Acknowledgements
 ---------------------
 The modified [iiwa_stack] library used was created by Konstantinos Chatzilygeroudis (costashatz@gmail.com)
